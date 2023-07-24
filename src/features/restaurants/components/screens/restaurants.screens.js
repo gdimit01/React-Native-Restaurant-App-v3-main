@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import styled from "styled-components/native";
-import { Searchbar } from "react-native-paper";
 import { RestaurantInfoCard } from "../restaurant-info-card-component";
-import { SafeAreaView, StatusBar, FlatList, View } from "react-native";
-import { Card, ActivityIndicator, Colors } from "react-native-paper";
+import { SafeAreaView, StatusBar, FlatList } from "react-native";
+import { Card, ActivityIndicator } from "react-native-paper";
 import { Spacer } from "../spacer/spacer.component";
 import { RestaurantsContext } from "../../../../services/restaurants/restaurants.context";
+import { Search } from "../../components/search.component";
 
 const RestaurantCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -14,10 +14,6 @@ const RestaurantCard = styled(Card)`
 const StyledSafeArea = styled(SafeAreaView)`
   flex: 1;
   margin-top: ${StatusBar.currentHeight};
-`;
-
-const SearchView = styled.View`
-  padding: ${(props) => props.theme.space[3]};
 `;
 
 const RestaurantList = styled(FlatList).attrs({
@@ -50,14 +46,13 @@ export const RestaurantsScreen = () => {
         </LoadingContainer>
       )}
 
-      <SearchView>
-        <Searchbar />
-      </SearchView>
+      <Search />
+
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => (
-          <Spacer position="bottom" size="large">
-            <RestaurantInfoCard key={item.name} restaurant={item} />
+          <Spacer position="bottom" size="large" key={item.name}>
+            <RestaurantInfoCard restaurant={item} />
           </Spacer>
         )}
       />
