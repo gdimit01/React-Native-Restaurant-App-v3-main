@@ -1,0 +1,10 @@
+{
+    "extends": "@react-native-community",
+    "rules": {
+        "quotes": [2, "double", { "avoidEscape": true }]
+    }
+
+// This file contains the JavaScript code that powers "Run Code" task.
+// Run Code is a native app for Windows, Linux, and OS X. It runs natively on the Apple silicon. 	It runs the following code
+
+}
