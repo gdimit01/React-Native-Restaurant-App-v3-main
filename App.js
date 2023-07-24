@@ -9,7 +9,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { SafeArea } from "./src/components/utils/safe-area.component";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-import { Ionicons } from "@expo/vector-icons";
+import Icon from "react-native-vector-icons/Ionicons";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
@@ -64,11 +64,31 @@ export default function App() {
           <RestaurantsContextProvider>
             <NavigationContainer>
               <Tab.Navigator
-                screenOptions={createScreenOptions}
-                tabBarOptions={{
-                  activeTintColor: "tomato",
-                  inactiveTintColor: "gray",
-                }}
+                screenOptions={({ route }) => ({
+                  tabBarIcon: ({ focused, color, size }) => {
+                    let iconName;
+
+                    // Select an icon based on the route name
+                    if (route.name === "Restaurants") {
+                      iconName = focused ? "restaurant" : "restaurant-outline";
+                    } else if (route.name === "Map") {
+                      iconName = focused ? "map" : "map-outline";
+                    } else if (route.name === "Settings") {
+                      iconName = focused ? "settings" : "settings-outline";
+                    }
+
+                    // You can return any component that you like here!
+                    return <Icon name={iconName} size={size} color={color} />;
+                  },
+                  tabBarActiveTintColor: "tomato",
+                  tabBarInactiveTintColor: "gray",
+                  tabBarStyle: [
+                    {
+                      display: "flex",
+                    },
+                    null,
+                  ],
+                })}
               >
                 <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
                 <Tab.Screen name="Map" component={Map} />

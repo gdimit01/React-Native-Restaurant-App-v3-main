@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components/native";
-//import { Text, StyleSheet } from "react-native";
-//import { Image } from "react-native";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 import { Spacer } from "./spacer/spacer.component";
@@ -40,29 +38,30 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     address = "100 fakestreet",
     isOpenNow = true,
     rating = 4,
-    isClosedTemporarily = true,
+    business_status = "OPERATIONAL",
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
     <RestaurantCard elevation={5}>
-      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      <RestaurantCardCover source={{ uri: photos[0] }} />
       <Info>
         <Text variant="label">{name}</Text>
         <Section>
           <Rating>
-            {ratingArray.map(() => (
-              <SvgXml xml={star} width={20} height={20} />
+            {ratingArray.map((_, i) => (
+              <SvgXml key={`star_${i}`} xml={star} width={20} height={20} />
             ))}
           </Rating>
           <SectionEnd>
-            {isClosedTemporarily && (
+            {business_status === "CLOSED_TEMPORARILY" ? (
               <Text variant="error">CLOSED TEMPORARILY</Text>
+            ) : !isOpenNow ? (
+              <Text variant="error">CLOSED TEMPORARILY</Text>
+            ) : (
+              <SvgXml xml={open} width={20} height={20} />
             )}
-            <Spacer position="left" size="large">
-              {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
-            </Spacer>
             <Spacer position="left" size="large">
               <Icon source={{ uri: icon }} />
             </Spacer>
