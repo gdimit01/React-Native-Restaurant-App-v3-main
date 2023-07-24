@@ -17,11 +17,11 @@ export const Search = () => {
       <Searchbar
         placeholder="Search for a location"
         value={searchKeyword}
-        onChangeText={(text) => {
-          setSearchKeyword(text); // Setting state at every change in input
-        }}
         onSubmitEditing={() => {
           search(searchKeyword);
+        }}
+        onChangeText={(text) => {
+          setSearchKeyword(text);
         }}
       />
     </SearchView>
