@@ -2,7 +2,12 @@ import React, { useContext } from "react";
 import styled from "styled-components/native";
 import { Search } from "../search.component";
 import { RestaurantInfoCard } from "../restaurant-info-card-component";
-import { SafeAreaView, StatusBar, FlatList, Pressable } from "react-native";
+import {
+  SafeAreaView,
+  StatusBar,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import { Card, ActivityIndicator, Colors } from "react-native-paper";
 import { Spacer } from "../spacer/spacer.component";
 import { RestaurantsContext } from "../../../../services/restaurants/restaurants.context";
@@ -50,11 +55,13 @@ export const RestaurantsScreen = ({ navigation }) => {
         data={restaurants}
         renderItem={({ item }) => {
           return (
-            <Pressable onPress={() => navigation.navigate("RestaurantDetail")}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("RestaurantDetail")}
+            >
               <Spacer position="bottom" size="large" key={item.name}>
                 <RestaurantInfoCard restaurant={item} />
               </Spacer>
-            </Pressable>
+            </TouchableOpacity>
           );
         }}
       />
