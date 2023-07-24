@@ -1,10 +1,10 @@
 import React from "react";
 
 import { createStackNavigator } from "@react-navigation/stack";
-import { RestaurantsScreen } from "../../features/restaurants/components/screens/restaurants.screen";
+import { RestaurantsScreen } from "../../features/restaurants/components/screens/restaurants.screens";
 const RestaurantStack = createStackNavigator();
 
-const RestaurantsNavigator = () => {
+export const RestaurantsNavigator = () => {
   return (
     <RestaurantStack.Navigator>
       <RestaurantStack.Screen

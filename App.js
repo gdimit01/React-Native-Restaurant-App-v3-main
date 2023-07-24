@@ -6,7 +6,7 @@ import { LocationContextProvider } from "./src/services/location/location.contex
 import { ThemeProvider } from "styled-components/native";
 import { theme } from "./src/infrastructure/theme";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-import { Navigation } from "./src/infrastructure/navigation/app.navigator";
+import { AppNavigator as Navigation } from "./src/infrastructure/navigation/app.navigator";
 
 //import Icon from "react-native-vector-icons/Ionicons";
 import {

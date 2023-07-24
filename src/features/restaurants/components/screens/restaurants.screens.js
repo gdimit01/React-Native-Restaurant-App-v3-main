@@ -16,10 +16,6 @@ const StyledSafeArea = styled(SafeAreaView)`
   margin-top: ${StatusBar.currentHeight};
 `;
 
-const SearchView = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
-
 const RestaurantList = styled(FlatList).attrs({
   contentContainerStyle: {
     padding: 16,
