@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components/native";
 import { Searchbar } from "react-native-paper";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 import { LocationContext } from "../../../services/location/location.context";
 
@@ -25,6 +26,7 @@ export const Search = () => {
       <Searchbar
         placeholder="Search for a location"
         value={searchKeyword}
+        icon={() => <Icon name="map" size={20} color="grey" />}
         onSubmitEditing={() => {
           search(searchKeyword);
         }}
